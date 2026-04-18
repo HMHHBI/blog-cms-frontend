@@ -25,9 +25,13 @@ export default function Home() {
     try {
       await axios.post("/logout");
     } catch (e) {}
+
     localStorage.removeItem("token");
+    // Cookie delete karne ke liye uski expiry purani date par set kar dein
+    document.cookie = "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+
     setIsLoggedIn(false);
-    router.push("/");
+    router.push("/login");
   };
 
   const handleDelete = async (id) => {

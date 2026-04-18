@@ -13,7 +13,15 @@ export default function Login() {
     e.preventDefault();
     try {
       const res = await axios.post("/login", { email, password });
-      localStorage.setItem("token", res.data.token);
+      const token = res.data.token;
+
+      // 1. LocalStorage for Client-side
+      localStorage.setItem("token", token);
+
+      // 2. Cookie for Middleware (Server-side)
+      // Hum cookie set kar rahe hain jo 7 din tak valid hogi
+      document.cookie = `token=${token}; path=/; max-age=${7 * 24 * 60 * 60}; SameSite=Lax;`;
+
       router.push("/admin/create");
     } catch (err) {
       alert("Invalid Credentials!");
