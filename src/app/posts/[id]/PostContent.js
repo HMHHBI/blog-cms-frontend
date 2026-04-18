@@ -4,6 +4,7 @@ import Link from "next/link";
 
 export default function PostContent({ post }) {
   // Yahan sirf UI dikhani hai, fetch server kar chuka hoga
+  const imageBaseUrl = process.env.NEXT_PUBLIC_API_URL.replace("/api", "");
   return (
     <main className="bg-white min-h-screen pb-20">
       <nav className="max-w-4xl mx-auto px-6 py-8">
@@ -29,7 +30,7 @@ export default function PostContent({ post }) {
         {post.image && (
           <div className="mb-12 rounded-4xl overflow-hidden shadow-2xl">
             <img
-              src={`http://blog-cms-api.test/storage/${post.image}`}
+              src={`${imageBaseUrl}/storage/${post.image}`}
               className="w-full h-auto object-cover max-h-150"
               alt={post.post_title}
             />

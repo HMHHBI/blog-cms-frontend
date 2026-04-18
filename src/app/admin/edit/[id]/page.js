@@ -19,7 +19,7 @@ export default function EditPost() {
     axios.get(`/posts/${id}`).then((res) => {
       setTitle(res.data.data.post_title);
       setContent(res.data.data.body);
-      setPreview(`http://blog-cms-api.test/storage/${res.data.data.image}`);
+      setPreview(`https://blog-cms-api.up.railway.app/storage/${res.data.data.image}`);
     });
   }, [id, router]);
 

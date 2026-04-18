@@ -4,16 +4,16 @@ import PostContent from "./PostContent";
 async function getPost(id) {
   try {
     // Try using the actual local URL instead of IP for a second
-    const res = await fetch(`http://blog-cms-api.test/api/posts/${id}`, {
+    const res = await fetch(`https://blog-cms-api.up.railway.app/api/posts/${id}`, {
       cache: "no-store",
     });
 
     // Agar upar wala fail ho, toh fallback to IP with Port
     if (!res.ok) {
       console.log("Fetching from direct URL failed, trying local IP...");
-      const fallback = await fetch(`http://127.0.0.1/api/posts/${id}`, {
+      const fallback = await fetch(`https://0.0.0.0/api/posts/${id}`, {
         cache: "no-store",
-        headers: { Host: "blog-cms-api.test" },
+        headers: { Host: "blog-cms-api.up.railway.app" },
       });
       if (!fallback.ok) return null;
       const json = await fallback.json();
