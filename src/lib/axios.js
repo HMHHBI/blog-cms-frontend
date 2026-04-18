@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://blog-cms-api.test/api", // Laravel ka default port
+  baseURL: "https://your-railway-link.up.railway.app/api", // Laravel ka default port
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
