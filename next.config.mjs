@@ -3,8 +3,8 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "blog-cms-api.test",
+        protocol: "https",
+        hostname: "blog-cms-api-production.up.railway.app",
         port: "",
         pathname: "/storage/**",
       },
